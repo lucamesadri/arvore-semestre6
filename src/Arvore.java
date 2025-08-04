@@ -11,19 +11,20 @@ public class Arvore<E extends Comparable<E>> {
     public No<E> adicionarValor(E valor) {
         No<E> novoNo = new No<E>(valor);
 
-        return adicionarValor(novoNo, this.raiz);
+        return adicionarValor(novoNo, null, this.raiz);
     }
 
-    public No<E> adicionarValor(No<E> novoNo, No<E> noAtual) {
+    public No<E> adicionarValor(No<E> novoNo, No<E> noAnterior, No<E> noAtual) {
         if (noAtual == null) {
+            novoNo.pai = noAnterior;
             return novoNo;
         }
 
         if (novoNo.valor.compareTo(noAtual.valor) > 0) {
-            No<E> no = adicionarValor(novoNo, noAtual.filhoDireito);
+            No<E> no = adicionarValor(novoNo, noAtual, noAtual.filhoDireito);
             noAtual.adicionarFilhoDireito(no);
         } else {
-            No<E> no = adicionarValor(novoNo, noAtual.filhoEsquerdo);
+            No<E> no = adicionarValor(novoNo, noAtual,  noAtual.filhoEsquerdo);
             noAtual.adicionarFilhoEsquerdo(no);
         }
         return noAtual;
