@@ -1,13 +1,10 @@
 public class App {
     public static void main(String[] args) throws Exception {
 
-        Arvore arvore = new Arvore<>();
-
+        Arvore<Integer> arvore = new Arvore<Integer>();
         No<Integer> raiz = new No<Integer>(50);
-        
         arvore.adicionarRaiz(raiz);
 
-        arvore.adicionarValor(20);
-        System.out.println();
+        System.out.println(arvore.raiz.valor);
     }
 }
